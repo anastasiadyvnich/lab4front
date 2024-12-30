@@ -1,8 +1,11 @@
-.intro.color {
+.intro.inactive {
     color: #fff;
-    background: #333;
+    background: #0423c0;
+}
+.intro.active {
+    color: #454545;
+    background: #02a05e;
 }
 .intro.color a {
-    color: #fff;
-    background: #333;
+    color: #363636;
 }
