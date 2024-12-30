@@ -7,8 +7,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     function changeColor(elem) {
     // Зміна кольору тла та тексту елемента
         elem.classList.toggle("color");
-        // elem.style.backgroundColor = elem.style.backgroundColor === 'red' ? 'blue': 'red';
-        // elem.style.color = elem.style.backgroundColor === 'red' ? 'white' : 'black';
     }
 
     // Прив'язуємо обробники подій із передачею елемента
