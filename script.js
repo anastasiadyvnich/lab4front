@@ -1,20 +1,27 @@
 //(85 mod 10) + 1 = 6
 
 window.addEventListener("DOMContentLoaded", (event) => {
-    var demo = document.getElementById("demo");
-    var nextElem = document.querySelector(".next");
+    const demo = document.getElementById("demo");
+    const nextElem = document.querySelector(".next");
 
-    function changeColor(elem) {
-    // Зміна кольору тла та тексту елемента
-        elem.classList.toggle("color");
+    function toggleClasses(elem) {
+        
+        if (elem.classList.contains("active")) {
+            
+            elem.classList.remove("active");
+            elem.classList.add("inactive");
+        } else {
+            
+            elem.classList.remove("inactive");
+            elem.classList.add("active");
+        }
     }
 
-    // Прив'язуємо обробники подій із передачею елемента
-    demo.onclick = function() {
-        changeColor(demo);
-    };
+    demo.addEventListener("click", () => {
+        toggleClasses(demo);
+    });
 
-    nextElem.onclick = function() {
-        changeColor(nextElem);
-    };
+    nextElem.addEventListener("click", () => {
+        toggleClasses(nextElem);
+    });
 });
