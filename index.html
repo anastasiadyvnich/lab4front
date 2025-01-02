@@ -11,40 +11,44 @@
 </head>
 <body>
     <main>
-  <h2 class="intro">Дивнич Анастасія Ярославівна</h2>
+	<h2>Дивнич Анастасія Ярославівна</h2>
  
-        <p class="intro">23.04.2005, м. Вінниця</p>
-        <p class="intro">          
-            Турбівська Школа №2<br>КПІ ім. Ігоря Сікорського:<br>
-       </p>
-       Хобі:<br>
-            <ul class="intro">
-                <li>Хореографія</li>
-                <li>Дизайн</li>
-                <li>Музика</li>
-            </ul>
-       
-        Улюблені книги чи фільми:<br>
-            <ul class="intro">
-                <li>Гаррі Поттер і Філософський Камінь</li>
-                <li>Артист</li>
-                <li>Зелена книга</li>
-            </ul>
-        
-        <p  id="demo" class="demo intro">
-            Dubai:<br>
-            Дубай – це ультрасучасне місто-держава, розташоване на узбережжі Перської затоки.<br>
-             Відомий своїми розкішними хмарочосами, штучними островами у формі пальм та розкішними готелями,<br>
-              Дубай став символом багатства та прогресу. та технологій.<br>
-              Визначні місця: <br>
-              Бурдж-Халіфа,<br>
-               Пальма Джумейра,<br>
-                Дубай Молл<br>
-            <img src="img/dubai.jpg" alt="dubai photo"><br>
-            <a href="https://dubai.ae/">Site City Of Dubai</a>
-        </p>
-    <p  id="next" class="next intro">Next element</p>
-    <p  id="image-box" class="image-box"></p>
+	<p class="intro">23.04.2005, м. Вінниця</p>
+	<p class="intro">          
+		Турбівська Школа №2<br>КПІ ім. Ігоря Сікорського:<br>
+	</p>
+	<p class="intro"> 
+	Хобі:
+	</p>
+	<ul class="intro">
+		<li>Хореографія</li>
+		<li>Дизайн</li>
+		<li>Музика</li>
+	</ul>
+	<p class="intro"> 
+	Улюблені книги чи фільми:
+	</p>
+	<ul id="demo" class="intro">
+		<li>Гаррі Поттер і Філософський Камінь</li>
+		<li>Артист</li>
+		<li>Зелена книга</li>
+	</ul>
+	
+	<p class="next intro">
+		Dubai:<br>
+		Дубай – це ультрасучасне місто-держава, розташоване на узбережжі Перської затоки.<br>
+		 Відомий своїми розкішними хмарочосами, штучними островами у формі пальм та розкішними готелями,<br>
+		  Дубай став символом багатства та прогресу. та технологій.<br>
+		  Визначні місця: <br>
+		  Бурдж-Халіфа,<br>
+		   Пальма Джумейра,<br>
+			Дубай Молл<br>
+		
+		<a href="https://dubai.ae/">Site City Of Dubai</a>
+	</p>
+    <p id="image-box" class="image-box">
+		<img src="img/dubai.jpg" alt="dubai photo" style="width: 300px; height: 200px;">
+	</p>
     <button type="button" id="add">додати</button>
     <button type="button" id="scale">збільшити</button>
     <button type="button" id="reduce">зменшити</button>
@@ -65,8 +69,8 @@ let imageElement = null; // Спочатку зображення немає
 function createImage() {
  const img = document.createElement('img');
  img.src = 'img/dubai.jpg'; // Замініть на ваш шлях
- img.style.width = '100px'; // Початковий розмір зображення
- img.style.height = '100px';
+ img.style.width = '300px'; // Початковий розмір зображення
+ img.style.height = '200px';
  imageBox.appendChild(img);
  imageElement = img;
 }
@@ -74,25 +78,34 @@ function createImage() {
 // Функція збільшення зображення
 function scaleImage() {
  if (imageElement) {
- imageElement.style.width = (parseInt(imageElement.style.width) + 20) + 'px';
- imageElement.style.height = (parseInt(imageElement.style.height) + 20) + 'px';
- }
+	imageElement.style.width = (parseInt(imageElement.style.width) + 20) + 'px';
+	imageElement.style.height = (parseInt(imageElement.style.height) + 20) + 'px';
+ }else{
+	const lastImage = imageBox.lastElementChild;
+	lastImage.style.width = (parseInt(lastImage.style.width) + 20) + 'px';
+	lastImage.style.height = (parseInt(lastImage.style.height) + 20) + 'px';
+	}
 }
 
 // Функція зменшення зображення
 function reduceImage() {
  if (imageElement) {
- imageElement.style.width = Math.max(20, parseInt(imageElement.style.width) - 20) + 'px';
- imageElement.style.height = Math.max(20, parseInt(imageElement.style.height) - 20) + 'px';
+	imageElement.style.width = Math.max(20, parseInt(imageElement.style.width) - 20) + 'px';
+	imageElement.style.height = Math.max(20, parseInt(imageElement.style.height) - 20) + 'px';
+ }else{
+	const lastImage = imageBox.lastElementChild;
+	lastImage.style.width = Math.max(20, parseInt(lastImage.style.width) - 20) + 'px';
+	lastImage.style.height = Math.max(20, parseInt(lastImage.style.height) - 20) + 'px';
  }
 }
 
 // Функція видалення зображення
 function deleteImage() {
- if (imageElement) {
- imageElement.parentNode.removeChild(imageElement);
- imageElement = null;
- }
+	if (imageElement) {
+		const imageBox = document.getElementById('image-box');
+		const lastImage = imageBox.lastElementChild;
+		imageBox.removeChild(lastImage);
+	}
 }
 
 // Додаємо обробники подій для кнопок
